@@ -2,6 +2,8 @@ from cgitb import reset
 from time import altzone
 import pandas as pd
 import numpy as np
+import statsmodels.formula.api as smf
+import matplotlib.pyplot as plt
 
 data = pd.read_stata("/Volumes/data/Research/FSW/Research_data/SOC/Anne-Rigt Poortman/Nieuwe Families NL/Zielinski/Cohesion paper/NFN_Main_Refresh_Sample_wave_3_v1.dta", convert_categoricals=False)
 
@@ -51,7 +53,6 @@ data["stepmiss"] = np.select(conditions, choice)
 data = data[data["stepmiss"] == 0]
 
 #Filter out both nonres kids
-
 data = data[((data["nonresbiochild"] == 1) & (data["stepchildfilter"] == 2)) == False]
 
 # Filter out both alone
@@ -62,8 +63,11 @@ data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 3)) == 
 data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 2)) == False]
 
 #Filter out step nonres fc alone
-data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 1)) == False]
-
+data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 0)) == False]
+#filter out nonres bio child + no step
+data = data[((data["nonresbiochild"] == 1) & (data["stepchildfilter"] == 0)) == False]
+#Filter out child alone + no step
+data = data[((data["nonresbiochild"] == 1) & (data["stepchildfilter"] == 3)) == False]
 
 #
 pd.crosstab(data["nonresbiochild"], data["stepchildfilter"])
@@ -108,7 +112,7 @@ crosstab.rename(columns={0: 'No stepchild',
                 1.0: 'nonresident child',
                 2.0: 'Child lives alone'},
                 inplace = True)
-
+crosstab
 
 
 #cohesion scale
@@ -120,6 +124,21 @@ data["A3T01_d"] = data["A3T01_d"].map({1:5, 2:4, 3:3, 4:2, 5:1})
 data["cohes"] = (data["A3T01_a"] + data["A3T01_b"] + data["A3T01_c"] + data["A3T01_d"]) / 4
 
 #Crosstab with values
+#For raw variables
+#crosstab2 = pd.crosstab(data["A3I08"], data["A3P10"], 
+#                       values = data["cohes"],
+#                       aggfunc = "mean",
+#                       margins = True)
+#crosstab2.rename(columns={1: 'Resident stepchild', 
+#                2: 'Nonresident stepchild',
+#                3: 'part-time resident stepchild', 
+#                4: 'stepchild alone'}, 
+#                index={1.0: 'resident child',
+#                2.0: 'nonresident child',
+#                3.0: 'Shared resience child'},
+#                inplace = True)
+
+
 
 crosstab2 = pd.crosstab(data["nonresbiochild"], data["stepchildfilter"], 
                        values = data["cohes"],
@@ -152,10 +171,41 @@ choices = [0, 2, 1, 2]
 data["combis"] = np.select(conditions, choices)
 
 
-reg = smf.ols(formula = "cohes ~ C(combis) + age_child_w3 + A3A01 + age_respondent_w3", data = data)
-res = reg.fit()
-res.summary()
+#Variable for part-time residence
+conditions = [
+              (data["A3I08"] == 3),
+              (data["A3P10"] == 3)
+]
+choices = [1, 1]
+data["parttime"] = np.select(conditions, choices)
 
+#Check crosstab
+crosstab3 = pd.crosstab(data["combis"], data["parttime"], 
+                       values = data["cohes"],
+                       aggfunc = "mean",
+                       margins = True)
+
+crosstab3.rename(columns={0: 'No stepchild', 
+                1: '(part-time) resident stepchild',
+                2: 'nonresident stepchild', 
+                3: 'stepchild alone'}, 
+                index={0.0: '(part-time) resident child',
+                1.0: 'nonresident child',
+                2.0: 'Child lives alone'},
+                inplace = True)
+
+crosstab3
+
+
+
+
+reg = smf.ols(formula = "cohes ~ C(combis) + parttime + (C(combis) * parttime) + age_child_w3 + A3A01 + age_respondent_w3", data = data)
+res = reg.fit()
+res.get_robustcov_results(cov_type='HC1')
+res.summary()
+resid = res.resid
+fitted = res.fittedvalues
+plt.scatter(resid, fitted)
  #nonresbiochild: 0 = resident/pt resident child, 1 = nonresident child, 2 = child alone
  # #stepchildfilter: 0 = no stepchild, 1 = resident/ pt resident stepchild, 2 = nonresident stepchild, 3 = stepchild lives alone
 
