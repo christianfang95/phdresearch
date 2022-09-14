@@ -52,16 +52,124 @@ choice = [1, 0, 0, 0]
 data["stepmiss"] = np.select(conditions, choice)
 data = data[data["stepmiss"] == 0]
 
+#Check missing data on dependent variable
+#Recode 88 to missing
+data["A3T01_a"] = data["A3T01_a"].replace(88.0, np.nan)
+data.A3T01_a.value_counts()
+data["A3T01_b"] = data["A3T01_b"].replace(88.0, np.nan)
+data.A3T01_b.value_counts()
+data["A3T01_c"] = data["A3T01_c"].replace(88.0, np.nan)
+data.A3T01_c.value_counts()
+data["A3T01_d"] = data["A3T01_d"].replace(88.0, np.nan)
+data.A3T01_d.value_counts()
+data["dvmiss"] = ((data["A3T01_a"].isna()) &  (data["A3T01_b"].isna()) & (data["A3T01_c"].isna()) & (data["A3T01_d"].isna()))
+#at least one missing value
+data["dvmiss_atleastone"] =((data["A3T01_a"].isna()) |  
+                            (data["A3T01_b"].isna()) | 
+                            (data["A3T01_c"].isna()) | 
+                            (data["A3T01_d"].isna()))
+
+#Check nonresident kids vis-a-vis dv missing 
+
+missing_crosstab_atleastone = pd.crosstab(data["nonresbiochild"], 
+                               data["stepchildfilter"], 
+                               values=data["dvmiss_atleastone"], 
+                               aggfunc="sum",
+                               margins=True)
+
+missing_crosstab_atleastone.rename(columns={0: 'No stepchild', 
+                1: '(part-time) resident stepchild',
+                2: 'nonresident stepchild', 
+                3: 'stepchild alone'}, 
+                index={0.0: '(part-time) resident child',
+                1.0: 'nonresident child',
+                2.0: 'Child lives alone'},
+                inplace = True
+)
+
+missing_crosstab_all = pd.crosstab(data["nonresbiochild"], 
+                               data["stepchildfilter"], 
+                               values=data["dvmiss"], 
+                               aggfunc="sum",
+                               margins=True)
+
+missing_crosstab_all.rename(columns={0: 'No stepchild', 
+                1: '(part-time) resident stepchild',
+                2: 'nonresident stepchild', 
+                3: 'stepchild alone'}, 
+                index={0.0: '(part-time) resident child',
+                1.0: 'nonresident child',
+                2.0: 'Child lives alone'},
+                inplace = True
+)
+missing_crosstab_all
+
+
+
+
+
+#Filter out missings
+data = data[data["dvmiss"] == 0]   
+
+#cohesion scale
+#recode so that higher values mean more cohesion -> a, b, d recode
+data["A3T01_a"] = data["A3T01_a"].map({1:5, 2:4, 3:3, 4:2, 5:1})
+data["A3T01_b"] = data["A3T01_b"].map({1:5, 2:4, 3:3, 4:2, 5:1})
+data["A3T01_d"] = data["A3T01_d"].map({1:5, 2:4, 3:3, 4:2, 5:1})
+
+data["cohes"] = (data["A3T01_a"] + data["A3T01_b"] + data["A3T01_c"] + data["A3T01_d"]) / 4
+
+
+#Cohesion crosstab
+cohesion_crosstab_all = pd.crosstab(data["nonresbiochild"], 
+                               data["stepchildfilter"], 
+                               values=data["cohes"], 
+                               aggfunc=np.mean,
+                               margins=True)
+
+
+
+cohesion_crosstab_all.rename(columns={0: 'No stepchild', 
+                1: '(part-time) resident stepchild',
+                2: 'nonresident stepchild', 
+                3: 'stepchild alone'}, 
+                index={0.0: '(part-time) resident child',
+                1.0: 'nonresident child',
+                2.0: 'Child lives alone'},
+                inplace = True
+)
+
+cohesion_crosstab_all.apply(lambda r: np.around(r, 2), axis=0)
+
+
+#Crosstab with sample sizes
+samplesize_crosstab = pd.crosstab(data["nonresbiochild"], 
+                               data["stepchildfilter"], 
+                               values=data["CBSvolgnr_person"], 
+                               aggfunc="count",
+                               margins=True)
+
+
+samplesize_crosstab.rename(columns={0: 'No stepchild', 
+                1: '(part-time) resident stepchild',
+                2: 'nonresident stepchild', 
+                3: 'stepchild alone'}, 
+                index={0.0: '(part-time) resident child',
+                1.0: 'nonresident child',
+                2.0: 'Child lives alone'},
+                inplace = True
+)
+samplesize_crosstab
+
+
+
+
 #Filter out both nonres kids
 data = data[((data["nonresbiochild"] == 1) & (data["stepchildfilter"] == 2)) == False]
-
 # Filter out both alone
-
 data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 3)) == False]
-
 #Filter out fc alone step nonres
 data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 2)) == False]
-
 #Filter out step nonres fc alone
 data = data[((data["nonresbiochild"] == 2) & (data["stepchildfilter"] == 0)) == False]
 #filter out nonres bio child + no step
@@ -84,23 +192,13 @@ crosstab.rename(columns={0: 'No stepchild',
                 2.0: 'Child lives alone'},
                 inplace = True)
 
-#Check missing data on dependent variable
-#Recode 88 to missing
-data["A3T01_a"] = data["A3T01_a"].replace(88.0, np.nan)
-data.A3T01_a.value_counts()
-data["A3T01_b"] = data["A3T01_b"].replace(88.0, np.nan)
-data.A3T01_b.value_counts()
-data["A3T01_c"] = data["A3T01_c"].replace(88.0, np.nan)
-data.A3T01_c.value_counts()
-data["A3T01_d"] = data["A3T01_d"].replace(88.0, np.nan)
-data.A3T01_d.value_counts()
 
-data["dvmiss"] = ((data["A3T01_a"].isna()) &  (data["A3T01_b"].isna()) & (data["A3T01_c"].isna()) & (data["A3T01_d"].isna()))
+
 pd.crosstab(data["dvmiss"], data["nonresbiochild"])
 pd.crosstab(data["dvmiss"], data["nonresstepchild"])
 
 
-data = data[data["dvmiss"] == 0]   
+
 
 crosstab = pd.crosstab(data["nonresbiochild"], data["stepchildfilter"], margins = True)
 
@@ -115,13 +213,6 @@ crosstab.rename(columns={0: 'No stepchild',
 crosstab
 
 
-#cohesion scale
-#recode so that higher values mean more cohesion -> a, b, d recode
-data["A3T01_a"] = data["A3T01_a"].map({1:5, 2:4, 3:3, 4:2, 5:1})
-data["A3T01_b"] = data["A3T01_b"].map({1:5, 2:4, 3:3, 4:2, 5:1})
-data["A3T01_d"] = data["A3T01_d"].map({1:5, 2:4, 3:3, 4:2, 5:1})
-
-data["cohes"] = (data["A3T01_a"] + data["A3T01_b"] + data["A3T01_c"] + data["A3T01_d"]) / 4
 
 #Crosstab with values
 #For raw variables
