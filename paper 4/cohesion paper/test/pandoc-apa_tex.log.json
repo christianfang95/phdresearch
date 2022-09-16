@@ -1,0 +1,62 @@
+[
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "from": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa_template.tex",
+        "for": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa_template.tex"
+    },
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "from": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa.csl",
+        "for": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa.csl"
+    },
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "from": "references.bib",
+        "for": "references.bib"
+    },
+    {
+        "type": "CiteprocWarning",
+        "verbosity": "WARNING",
+        "message": "citation fig:myplot not found"
+    },
+    {
+        "type": "CiteprocWarning",
+        "verbosity": "WARNING",
+        "message": "citation tbl:anotherone not found"
+    },
+    {
+        "type": "CiteprocWarning",
+        "verbosity": "WARNING",
+        "message": "citation tbl:mytable not found"
+    },
+    {
+        "type": "CiteprocWarning",
+        "verbosity": "WARNING",
+        "message": "citation tbl:tbllong not found"
+    },
+    {
+        "type": "BlockNotRendered",
+        "verbosity": "INFO",
+        "contents": {
+            "t": "RawBlock",
+            "c": [
+                "html",
+                "<!-- This is a comment -->"
+            ]
+        }
+    },
+    {
+        "type": "BlockNotRendered",
+        "verbosity": "INFO",
+        "contents": {
+            "t": "RawBlock",
+            "c": [
+                "html",
+                "<!--\nThis is\nanother\ncomment\n-->"
+            ]
+        }
+    }
+]

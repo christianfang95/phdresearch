@@ -1,0 +1,391 @@
+% options for packages loaded elsewhere
+\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
+% specify apa6 document mode with command to have a default
+$if(mode)$
+\newcommand{\pandocDocMode}{$mode$}$else$
+\newcommand{\pandocDocMode}{man}$endif$
+
+% apa6 mode and class options
+\documentclass[$if(classoption)$\pandocDocMode,longtable,$for(classoption)$$classoption$$sep$,$endfor$$else$\pandocDocMode,longtable$endif$$if(floatsintext)$,floatsintext$endif$]{apa6}
+
+% for mode selection options
+\usepackage{ifthen}
+
+\newcommand{\forceLongTablePkg}{}
+
+% setup mode ifs
+\newif\ifmanmode
+\newif\ifdocmode
+\newif\ifjoumode
+\ifthenelse{\equal{\string \pandocDocMode}{\string man}}{
+    \manmodetrue
+}{
+    \renewcommand{\forceLongTablePkg}{longtable}
+    \ifthenelse{\equal{\string \pandocDocMode}{\string doc}}{
+        \docmodetrue
+    }{
+        \ifthenelse{\equal{\string \pandocDocMode}{\string jou}}{
+            \joumodetrue
+        }{
+% None
+}}}
+
+
+\usepackage{\forceLongTablePkg}
+
+$if(floatsintext)$
+% floatsintext on
+$else$
+% man mode uses the endfloat package,
+% this will try to set tables and figures at the end for longtables too
+\ifmanmode
+\DeclareDelayedFloatFlavor{longtable}{table}
+\fi
+$endif$
+
+% other packages
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+% handle different types of tex engines
+% if pdftex
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+% if luatex or xelatex
+\else
+$if(mathspec)$
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{unicode-math}
+  \fi
+$else$
+  \usepackage{unicode-math}
+$endif$
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+$for(fontfamilies)$
+  \newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
+$endfor$
+$if(mainfont)$
+    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$endif$
+$if(sansfont)$
+    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
+$endif$
+$if(mathfont)$
+$if(mathspec)$
+  \ifxetex
+    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \else
+    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \fi
+$else$
+  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+$endif$
+$endif$
+$if(CJKmainfont)$
+  \ifxetex
+    \usepackage{xeCJK}
+    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \fi
+$endif$
+$if(luatexjapresetoptions)$
+  \ifluatex
+    \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
+  \fi
+$endif$
+$if(CJKmainfont)$
+  \ifluatex
+    \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
+    \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \fi
+$endif$
+\fi
+
+% other language options
+$if(lang)$
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+$if(babel-newcommands)$
+  $babel-newcommands$
+$endif$
+\else
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+$for(polyglossia-otherlangs)$
+  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+$endfor$
+\fi
+$else$
+\usepackage[american]{babel}
+$endif$
+\usepackage{csquotes}
+\usepackage{microtype}
+
+% disable microtype protrusion for tt fonts
+\UseMicrotypeSet[protrusion]{basicmath}
+
+\usepackage{graphicx,grffile}
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+$if(colorlinks)$
+\usepackage{xcolor}
+$endif$
+
+% Pandoc stuff
+\let\tightlist\relax % empty pandoc tight list command
+
+% Hyperlinks and other metadata in pdf
+\usepackage{hyperref}
+\hypersetup{
+$if(title-meta)$
+            pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+            pdfauthor={$author-meta$},
+$endif$
+$if(keywords)$
+            pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+            colorlinks=true,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$Blue$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+$else$
+            colorlinks=false,
+            linkcolor=Black,
+            citecolor=Black,
+            urlcolor=Black,
+            pdfborder={0 0 0},
+$endif$
+            breaklinks=true}
+\urlstyle{same} % don't use monospace font for urls
+
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}$endif$
+
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}$endif$
+
+$if(bibliography)$
+% References
+\usepackage[backend=biber,sortcites=true,style=apa,sorting=nyt,isbn=false,url=false]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$$endif$
+
+$if(title)$
+% Title page stuff
+\title{$title$}
+$else$
+\title{~}$endif$
+$if(subtitle)$
+\shorttitle{$subtitle$}
+$else$
+\shorttitle{~}$endif$
+$if(author)$
+$if(twogroups)$
+\twoauthors$for(author)${$author$}$endfor$
+$else$$if(threegroups)$
+\threeauthors$for(author)${$author$}$endfor$
+$else$$if(fourgroups)$
+\fourauthors$for(author)${$author$}$endfor$
+$else$$if(fivegroups)$
+\fiveauthors$for(author)${$author$}$endfor$
+$else$$if(sixgroups)$
+\sixauthors$for(author)${$author$}$endfor$
+$else$
+\author{$for(author)$$author$$sep$, $endfor$}
+$endif$$endif$$endif$$endif$$endif$
+$else$
+\author{~}$endif$
+$if(institute)$
+$if(twogroups)$
+\twoaffiliations$for(institute)${$institute$}$endfor$
+$else$$if(threegroups)$
+\threeaffiliations$for(institute)${$institute$}$endfor$
+$else$$if(fourgroups)$
+\fouraffiliations$for(institute)${$institute$}$endfor$
+$else$$if(fivegroups)$
+\fiveaffiliations$for(institute)${$institute$}$endfor$
+$else$$if(sixgroups)$
+\sixaffiliations$for(institute)${$institute$}$endfor$
+$else$
+\affiliation{$for(institute)$$institute$$sep$\\ $endfor$}
+$endif$$endif$$endif$$endif$$endif$
+$else$
+\affiliation{~}$endif$
+
+$if(date)$
+\note{$date$}$endif$
+
+$if(authornote)$
+\authornote{%
+$authornote$
+}$endif$
+
+$if(abstract)$
+% Abstract page
+\abstract{%
+$abstract$
+}$endif$
+
+$if(keywords)$
+\keywords{$for(keywords)$$keywords$$sep$, $endfor$}$endif$
+
+
+\newcommand{\journalOptions}{
+\ifthenelse{\equal{\string \pandocDocMode}{\string jou}}{
+
+% Journal specific commands may go here:
+$if(joucommands.leftheader)$
+\leftheader{$joucommands.leftheader$}$endif$
+$if(joucommands.journal)$
+\journal{$joucommands.journal$}$endif$
+$if(joucommands.volume)$
+\volume{$joucommands.volume$}$endif$
+$if(joucommands.ccoppy)$
+\ccoppy{$joucommands.ccoppy$}$endif$
+$if(joucommands.copnum)$
+\copnum{$joucommands.copnum$}$endif$
+}{}
+}
+
+\journalOptions{}
+
+$for(include-before)$
+% Other custom includes
+$include-before$
+
+$endfor$
+
+% table caption width
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand\getlongtablewidth{%
+\begingroup
+\ifcsname LT@\roman{LT@tables}\endcsname
+\global\longtablewidth=0pt
+\renewcommand\LT@entry[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}%
+\@nameuse{LT@\roman{LT@tables}}%
+\fi
+\endgroup}
+
+
+%% pandoc-tablenos: environment to disable table caption prefixes
+\makeatletter
+\newcounter{tableno}
+\newenvironment{tablenos:no-prefix-table-caption}{
+  \caption@ifcompatibility{}{
+    \let\oldthetable\thetable
+    \let\oldtheHtable\theHtable
+    \renewcommand{\thetable}{tableno:\thetableno}
+    \renewcommand{\theHtable}{tableno:\thetableno}
+    \stepcounter{tableno}
+    \captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+    \captionsetup{labelformat=default}
+    \let\thetable\oldthetable
+    \let\theHtable\oldtheHtable
+    \addtocounter{table}{-1}
+  }
+}
+\makeatother
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% PREAMBLE END
+% --------------
+% DOCUMENT START
+
+\begin{document}
+$if(title)$\maketitle$endif$
+
+$body$
+
+$if(bibliography)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+
+$if(biblatex)$$else$
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{15pt}
+$endif$
+
+\end{document}

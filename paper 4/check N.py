@@ -4,6 +4,16 @@ import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
+import seaborn as sns 
+import stata_setup
+
+#Configure stata
+import sys
+sys.path.append('Applications/Stata/utilities')
+from pystata import config
+config.init('mp')
+import pystata
+
 
 data = pd.read_stata("/Volumes/data/Research/FSW/Research_data/SOC/Anne-Rigt Poortman/Nieuwe Families NL/Zielinski/Cohesion paper/NFN_Main_Refresh_Sample_wave_3_v1.dta", convert_categoricals=False)
 
@@ -104,13 +114,6 @@ missing_crosstab_all.rename(columns={0: 'No stepchild',
 )
 missing_crosstab_all
 
-
-
-
-
-#Filter out missings
-data = data[data["dvmiss"] == 0]   
-
 #cohesion scale
 #recode so that higher values mean more cohesion -> a, b, d recode
 data["A3T01_a"] = data["A3T01_a"].map({1:5, 2:4, 3:3, 4:2, 5:1})
@@ -118,6 +121,8 @@ data["A3T01_b"] = data["A3T01_b"].map({1:5, 2:4, 3:3, 4:2, 5:1})
 data["A3T01_d"] = data["A3T01_d"].map({1:5, 2:4, 3:3, 4:2, 5:1})
 
 data["cohes"] = (data["A3T01_a"] + data["A3T01_b"] + data["A3T01_c"] + data["A3T01_d"]) / 4
+
+
 
 
 #Cohesion crosstab
@@ -139,7 +144,9 @@ cohesion_crosstab_all.rename(columns={0: 'No stepchild',
                 inplace = True
 )
 
-cohesion_crosstab_all.apply(lambda r: np.around(r, 2), axis=0)
+cohesion_crosstab_all = cohesion_crosstab_all.apply(lambda r: np.around(r, 2), axis=0)
+
+
 
 
 #Crosstab with sample sizes
@@ -160,6 +167,71 @@ samplesize_crosstab.rename(columns={0: 'No stepchild',
                 inplace = True
 )
 samplesize_crosstab
+
+#option A for grouping respondents
+
+conditions = [(data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 0), #resident - no step
+              (data["nonresbiochild"] == 1.0) & (data["stepchildfilter"] == 1), #non resident - resident
+              (data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 2), #resident - non resident
+              (data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 1)  #resident - resident
+
+]
+
+choices = [0, 1, 1, 2]
+
+data["combinations_a"] = np.select(conditions, choices)
+
+cohes_combinations_a = pd.DataFrame(data["cohes"].groupby(data["combinations_a"]).mean())
+cohes_combinations_a.index = ["resident - no step", "(non)res-(non-res)", "res-res"]
+sns.barplot(y = cohes_combinations_a.index , x = cohes_combinations_a.cohes)
+
+#We see: hardly any differences
+
+#Option B for grouping respondents
+conditions = [(data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 0), #resident - no step
+              (data["nonresbiochild"] == 1.0) & (data["stepchildfilter"] == 0), #nonres - no step
+              (data["nonresbiochild"] == 1.0) & (data["stepchildfilter"] == 1), #non resident - resident
+              (data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 2), #resident - non resident
+              (data["nonresbiochild"] == 0.0) & (data["stepchildfilter"] == 1),  #resident - resident
+              (data["nonresbiochild"] == 1.0) & (data["stepchildfilter"] == 2)  #nonres - nonres
+
+]
+choices = [0, 1, 2, 2, 3, 4]
+
+data["combinations_b"] = np.select(conditions, choices)
+
+cohes_combinations_b = pd.DataFrame(data["cohes"].groupby(data["combinations_b"]).mean())
+cohes_combinations_b.index = ["res, no step", "nonres, no step", "(non)res - (non)res", "res-res", "non res-non res" ]
+
+sns.barplot(y = cohes_combinations_b.index , 
+            x = cohes_combinations_b.cohes, 
+            order =["nonres, no step", "res, no step", "res-res", "non res-non res", "(non)res - (non)res" ])
+
+
+#Part-time variable
+conditions = [
+              (data["A3I08"] == 3),
+              (data["A3P10"] == 3)
+]
+choices = [1, 1]
+data["parttime"] = np.select(conditions, choices)
+
+
+
+
+
+
+
+
+######### Regression with stata to get marginal effects
+pystata.stata.pdataframe_to_data(data)
+
+%stata reg cohes i.nonresbiochild##i.stepchildfilter
+
+
+
+#Filter out missings
+data = data[data["dvmiss"] == 0]   
 
 
 
@@ -261,14 +333,6 @@ choices = [0, 2, 1, 2]
 
 data["combis"] = np.select(conditions, choices)
 
-
-#Variable for part-time residence
-conditions = [
-              (data["A3I08"] == 3),
-              (data["A3P10"] == 3)
-]
-choices = [1, 1]
-data["parttime"] = np.select(conditions, choices)
 
 #Check crosstab
 crosstab3 = pd.crosstab(data["combis"], data["parttime"], 

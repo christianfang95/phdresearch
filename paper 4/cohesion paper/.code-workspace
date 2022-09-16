@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+            "name": "this-workspace",
+			"path": "."
+		},
+		{
+            "name": "pandoc-apa",
+			"path": "/Users/christianfang/Library/Application Support/Sublime Text 3/Packages/User/pandoc-apa"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"example": true
+		},
+        "editor.insertSpaces": true
+	}
+}

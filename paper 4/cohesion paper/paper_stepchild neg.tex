@@ -1,0 +1,494 @@
+% options for packages loaded elsewhere
+\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+
+% specify apa6 document mode with command to have a default
+\newcommand{\pandocDocMode}{jou}
+% apa6 mode and class options
+\documentclass[\pandocDocMode,longtable,floatsintext]{apa6}
+
+% for mode selection options
+\usepackage{ifthen}
+
+\newcommand{\forceLongTablePkg}{}
+
+% setup mode ifs
+\newif\ifmanmode
+\newif\ifdocmode
+\newif\ifjoumode
+\ifthenelse{\equal{\string \pandocDocMode}{\string man}}{
+    \manmodetrue
+}{
+    \renewcommand{\forceLongTablePkg}{longtable}
+    \ifthenelse{\equal{\string \pandocDocMode}{\string doc}}{
+        \docmodetrue
+    }{
+        \ifthenelse{\equal{\string \pandocDocMode}{\string jou}}{
+            \joumodetrue
+        }{
+% None
+}}}
+
+
+\usepackage{\forceLongTablePkg}
+
+% floatsintext on
+
+% other packages
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+% handle different types of tex engines
+% if pdftex
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+% if luatex or xelatex
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+
+% other language options
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage{microtype}
+
+% disable microtype protrusion for tt fonts
+\UseMicrotypeSet[protrusion]{basicmath}
+
+\usepackage{graphicx,grffile}
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+
+% Pandoc stuff
+\let\tightlist\relax % empty pandoc tight list command
+
+% Hyperlinks and other metadata in pdf
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Parents' Perceptions of Stepfamily Cohesion},
+            pdfauthor={Christian Fang \& Anne-Rigt Poortman},
+            pdfkeywords={stepfamilies, divorce, cohesion},
+            colorlinks=true,
+            linkcolor=Blue,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same} % don't use monospace font for urls
+
+
+
+
+
+% References
+\usepackage[backend=biber,sortcites=true,style=apa,sorting=nyt,isbn=false,url=false]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{references.bib}
+
+% Title page stuff
+\title{Parents' Perceptions of Stepfamily Cohesion}
+\shorttitle{~}\author{Christian Fang \& Anne-Rigt Poortman}
+\affiliation{Utrecht University}
+
+\note{Last updated: \today}
+\authornote{%
+\noindent Correspondence:
+
+Christian Fang Department of Sociology P.O. Box 80140 3584 CH Utrecht
+
+Email: c.fang@uu.nl
+}
+% Abstract page
+\abstract{%
+TBD
+}
+\keywords{stepfamilies, divorce, cohesion}
+
+\newcommand{\journalOptions}{
+\ifthenelse{\equal{\string \pandocDocMode}{\string jou}}{
+
+% Journal specific commands may go here:
+}{}
+}
+
+\journalOptions{}
+
+
+% table caption width
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand\getlongtablewidth{%
+\begingroup
+\ifcsname LT@\roman{LT@tables}\endcsname
+\global\longtablewidth=0pt
+\renewcommand\LT@entry[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}%
+\@nameuse{LT@\roman{LT@tables}}%
+\fi
+\endgroup}
+
+
+%% pandoc-tablenos: environment to disable table caption prefixes
+\makeatletter
+\newcounter{tableno}
+\newenvironment{tablenos:no-prefix-table-caption}{
+  \caption@ifcompatibility{}{
+    \let\oldthetable\thetable
+    \let\oldtheHtable\theHtable
+    \renewcommand{\thetable}{tableno:\thetableno}
+    \renewcommand{\theHtable}{tableno:\thetableno}
+    \stepcounter{tableno}
+    \captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+    \captionsetup{labelformat=default}
+    \let\thetable\oldthetable
+    \let\theHtable\oldtheHtable
+    \addtocounter{table}{-1}
+  }
+}
+\makeatother
+
+
+% PREAMBLE END
+% --------------
+% DOCUMENT START
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+High rates of divorce and repartnering mean that postdivorce
+stepfamilies are common in modern societies
+\autocite{raley_divorce_2020}. When parents repartner after divorce,
+they are faced with multiple challenges. For example, parents need to
+adjust to their new partner and, at the same time, often feel
+responsible for fostering good relationships between their child and
+their new partner, who becomes - at least by definition - the child's
+stepparent \autocite{jensen2017transitioning}. Such processes of family
+reorganization are often complex and difficult, which is why parents
+might find it difficult to feel that their stepfamily is cohesive
+\autocite{ganong2019stepfathers} \autocite{pink1985problem}
+\autocite{waldren1990cohesion}. Stepfamily cohesion refers to an overall
+perception of unity, closeness, and meaningful involvement regarding
+one's stepfamily
+{[}\textcite{komter2006strength}{]}\autocite{waldren1990cohesion}
+\autocite{jensen2022associations}. Cohesion is the feeling that one's
+stepfamily is a coherent and supportive unit, rather than a disjoint
+patchwork \autocite{favez2015coparenting}.
+
+Cohesion is conceptually closely related to family belonging (i.e.,
+individuals' feelings that they are part of the family; see
+\autocite{king2015adolescents}). Feelings of cohesion are important to
+investigate due to their contribution to family functioning and family
+members' well-being. For example, divorced parents can profit from a
+more cohesive stepfamily in terms of higher perceived well-being and
+lower stress levels \autocite{waldren1990cohesion}. This can, in turn,
+positively affect their parenting, which can benefit their children
+\autocite{king2015adolescents}. Children growing up in more cohesive
+stepfamilies have been found to exhibit fewer behavioral problems and
+score higher on subjective well-being \autocite{shigeto2014roles}.
+
+The limited literature on stepfamily cohesion has mostly focused on the
+consequences of (a lack of) stepfamily cohesion (e.g.,
+\autocite{duncan1994effects}, \autocite{hong2015interactive},
+\autocite{shigeto2014roles}) rather than the antecedents of perceptions
+of stepfamily cohesion. The few studies that do consider factors
+contributing to perceptions of cohesion usually only consider the
+influences of the relationship qualities between different stepfamily
+member (e.g., \autocite{jensen2022associations}). Furthermore, most of
+these studies only study perceptions of cohesion cohesion only in the
+most common stepfamily type (i.e., resident stepfather families, see
+e.g., \autocite{favez2015coparenting}, \autocite{waldren1990cohesion}).
+
+This stepfamily type is, however, becomming less and less the default.
+Stepfamilies have considerably diversified in recent decades, for
+example in terms of residence arrangements. Nowadays, an increasing
+share of parents opt for shared residence arrangements (i.e., joint
+physical custody) or (to a lesser extent) sole father residence
+\autocite{poortman2017shared}. Consequently, more parents experience
+their children living only part-time with them or mostly with their
+ex-partners, which can have important ramifications for how cohesive
+parents perceive their stepfamily. This picture can become even more
+complicated when one considers that in many postdivorce stepfamilies
+parents have a shared biological child with the new partner, and their
+new partners can also have children from their previous relationship,
+who also follow a residence arrangement. Such postdivorce stepfamily
+diversity is pivotal to consider as it could reveal stepfamily
+constellations that are particularly prone to be considerd as less
+cohesive than others, with potentially detrimental consequences for
+parents and their children living in those types of stepfamilies.
+
+In this study, we comprehensively investigate parents' perceptions of
+stepfamily cohesion in diverse stepfamilies using large-scale survey
+data. We, first, consider differences between parents who do and who do
+not have a shared biological child with their current partners vis-a-vis
+perceptions of cohesion. Second, we consider parents' biological child's
+and potential stepchildrens' residence arrangements. For this study, we
+used the third wave of the New Families in the Netherlands (NFN) survey,
+collected in 2020 (N=3,056). NFN is a longitudinal survey based on a
+probability sample of Dutch parents who divorced or separated in
+2009/10. Using this data provides the unique opportunity to investigate
+parents' feelings of cohesion across a wide range of postdivorce
+families, such as those with shared residence arrangements.
+
+\hypertarget{theoretical-background}{%
+\section{Theoretical Background}\label{theoretical-background}}
+
+In the following, we outline our theoretical arguments regarding how and
+why postdivorce stepfamily structure could influence parents'
+perceptions of stepfamily cohesion. We present our arguments from the
+vantage point of the so-called ``focal parent'' (i.e., the respondent).
+The focal parents are all divorced and have a biological child from
+their previous relationship. That child follows a residence arrangement
+(sole mother/father residence or shared residence). Subsequently, the
+focal parents entered a stable, coresidential relationship (i.e., they
+cohabit or a married) and thereby formed a stepfamily.
+
+We start by describing the potential influence that having a shared
+biological child has on perceptions of cohesion, before describing
+potential group differences between focal parents' biological children's
+residence arrangements and residence arrangements of the stepchild
+(i.e., children from the current partners' former union).
+
+\hypertarget{having-a-shared-biological-child}{%
+\subsection{Having a shared biological
+child}\label{having-a-shared-biological-child}}
+
+Upwards trends in remarriage and multipartner fertility imply that many
+repartnered parents go on to having a shared biological child with their
+current partner \autocite{lappegaard2018intergenerational}. For two main
+reasons, having such a shared biological child can increase parents'
+perceptions of stepfamily cohesion.
+
+One line of argument is based on the presence of a shared biological
+child influencing perceptions of cohesion via relationship quality.
+Parents might deliberately seek to have a biological child with their
+current partner to improve and stabilize the relationship with him or
+her (i.e., the so-called ``cement'' or ``concrete'' baby). While doing
+so has been shown to potentially have have negative consequences of
+their existing biological childrens' well-being
+\autocite{sanner2018half}, studies investigating parents' accounts have
+found a positive association between having a shared child and the
+quality of the relationship with their new partner
+\autocite{ivanova2019cementing}. As relationship satisafction has, in
+turn, been demonstrated to increase perceptions of stepfamily cohesion
+(\autocite{jensen2022associations} \autocite{king2015adolescents}
+\autocite{king2016factors}, one would expect that having a shared
+biological child is positively related to perceptions of cohesion.
+
+Another line of argument is based on shared children changing parents'
+family values and perceptions of their family in a more systemic way.
+The birth of a shared biological child is a subtantial family structure
+transition, that prompts all family members to renegotiate role,
+boundaries, expectations, shared norms and values, and family rituals
+and routines \autocite{coleman2013resilience}. For example, whereas
+roles and boundaries in stepfamilies tend to be permeable and - to an
+extent - ambiguous \autocite{fine1992perceived}, the birth of a common
+child can clarify roles and boundaries as stepfamily members become
+biologically related to one another (\autocite{anderson1999sibling}
+\autocite{pasley1989boundary}). This is in line with findings from
+studies showing that the birth of a common child reduces uncertainty
+about one's family (\autocite{downs2004family},
+\autocite{friedman1994theory}), leading to more positve evaluations of
+ones family environment. Having a shared child might also make shared
+norms and values more concrete, as norms towards biologically related
+kin are stronger than those towards non-related kin. The birth of a
+shared child might also give parents the impression that their family is
+now ``real'', as it corresponds more closely to the societal sterotype
+of what a family is, i.e., the nuclear family. Therefore, we hypothesize
+that:
+
+H1: Parents who have a shared biological child with their partner
+perceive higher extents of stepfamily cohesion than those who do not
+have a shared child.
+
+\hypertarget{residence-of-focal-parents-biological-child}{%
+\subsection{Residence of Focal Parent's Biological
+Child}\label{residence-of-focal-parents-biological-child}}
+
+Whereas focal parents' potential children with their current partners
+will - by definition - live in their common household, their biological
+children with their previous partners and potential stepchildren (so
+their current partner's biological children from their previous
+relationship) can follow different postdivorce residence arrangements.
+
+\hypertarget{residence-of-focal-parents-biological-child-with-the-previous-partner}{%
+\subsubsection{Residence of Focal Parents' Biological Child with the
+Previous
+Partner}\label{residence-of-focal-parents-biological-child-with-the-previous-partner}}
+
+In the Netherlands, three residence arrangements are common: sole mother
+residence (about two thirds), shared residence (i.e., joint physical
+custody; about one quarter), and sole father residence
+\autocite{poortman2017shared}. Therefore, the focal parent might be a
+resident parent (i.e., the biological child resides mostly in his/her
+household), a nonresident parent (i.e., the biological child might
+reside mostly in the household of the ex-partner), or a part-time
+resident parent (i.e., the child lives about half of the time in the
+focal parent's and half of the time in the ex-partner's household).
+
+Nonresident parents likely perceive the lowest extent of stepfamily
+cohesion. For once, nonresident parents' contact opportunities with
+their biological children are inherently limited - nonresident parents
+typically see their children only every (other) weekend
+\autocite{kelly2007children}. SUch limited contact might mean that
+nonresident parents could feel that they are missing out on a
+substantial part of their children's lives and feel that they are the
+``unimportant parent''
+(\autocite{kielty2005mothers},\autocite{stewart1999disneyland}.
+Furthermore, they also have fewer opportunities for forming a new
+stepfamily comprising their biological child, their current partner, and
+themselves due to time constraints or their children resisting such
+attempts \autocite{jensen2015perceived}. In sum, due to their child
+living mostly outside of their own household, nonresident parents might
+in fact consider their stepfamily as factually nonexistent, let alone
+cohesive \autocite{kielty2005mothers}.
+
+Part-time resident parents faces unique challenges in creating
+stepfamily cohesion. One the one hand, their child resides part-time in
+their own household, which gives focal parents greater opportunities to
+create a stepfamily, for example by incorporating their children into
+new family routines \autocite{bakker2015family}. On the other hand,
+shared residence arrangements imply that the stepfamily is constantly in
+flux \autocite{carlsund2014swedish}. Parents might experience their
+child constantly ``entering and leaving'' their family as stressful, as
+they have to regularly switch between a life with and without their
+child. Though some parents might appreciate such a clear distinction
+between time with and without their children
+\autocite{botterman2015social}, for others shared residence might be
+challenging \autocite{walper2021shared}. The lack of stability and
+temporal compartmentalization of family life might make it difficult for
+part-time resident parents to feel a sense of cohesion.
+
+Resident parents' stepfamily situation corresponds most closely to what
+societal family values prescibe a family should look like: a couple plus
+a child living in the same household. This arrangement, thus,
+corresponds most closely to the pre-divorce situation, especially in
+terms of contact oppotunities. Resident parents see their children
+almost every day and can easily engage in family routines and rituals
+with them, such as having shared dinners (\autocite{bakker2015family}
+\autocite{waller2014residential}). Taken together, these factors could
+give focal parents the feeling that they are a ``real'', cohesive,
+stepfamily \autocite{weaver2010caught}. We, thus, hypothesize that:
+
+H2a: Resident focal parents perceive the highest extent of stepfamily
+cohesion, followed by part-time resident focal parents, and, lastly,
+nonresident focal parents.
+
+\hypertarget{presence-and-residence-of-stepchildren}{%
+\subsubsection{Presence and Residence of
+Stepchildren}\label{presence-and-residence-of-stepchildren}}
+
+Whether focal parents have stepchildren and in which household such
+potential stepchildren live might substantially affect parents'
+perceptions of stepfamily cohesion. If the focal parent's current
+partner also has a child from a previous relationship, logically, both
+the focal parent and the current partner are simultaneously biological
+parents and stepparents.
+
+On the one hand, it has been argued that both partners already having a
+child creates a ``level playing field'' \autocite{fine1996clarity}. Both
+partners know what it means to be a parent, which might reduce frictions
+and somewhat clarify the otherwise ambiguous role of the stepparent. On
+the other hand, acquiring a stepchild is, for many parents, still an
+ambiguous gain \autocite{jensen2021theorizing}, which means that parents
+might be unclear about how to relate to their new stepchild and what the
+stepchild's place in the family is. Such uncertainty about roles and
+boundaries might reduce parents' perceptions that their stepfamily is a
+cohesive unit \autocite{downs2004family}. Empirical studies
+investigating parents' well-being, furthermore, overall point to having
+an additional stepchild being demanding and potentially detrimental to
+parents' well-being. For once, establishing and negotiating
+relationships with a stepchild is an often long and difficult process
+\autocite{ganong1999stepparents}. Studies have shown that many parents
+report feeling rejected by their stepchildren, and might suffer from
+depressive symptoms as a result (\autocite{ganong2011patterns},
+\autocite{shapiro2011parenting}). Feeling rejected by ones stepchild is,
+logically, likely also detrimental to perceiving one's stepfamily as
+cohesive. Additionally, taking on additional parenting responsibilities
+might be stressful and time-consuming \autocite{guzzo2019variation}.
+Futhermore, it might be stressful to concurrently perform the role of
+the biological parent and stepparent, especially in view of the
+stepparent role being up to negotiation with the current partner
+\autocite{nomaguchi2020parenthood}. As a result, stepparents might be
+likely to experience role and coparenting strains, which may induce
+conflicts and disagreements with the current partner. Such conflicts
+likely being detrimental to feeling that one's stepfamily is cohesive.
+
+The extent to which such negative consequences of having stepchildren
+become salient likely differs by where their stepchild lives. Focal
+parents' stepchildren can follow similar residence arrangements as those
+of their biological children. Hence, focal parents can have a
+nonresident stepchild, a part-time resident stepchild, or a resident
+stepchild. Focal parents with residential stepchildren are exposed more
+frequently and intensively to their stepchildren than are focal parents
+with nonresident or part-time resident stepchildren, which implies that
+they might be the ones perceiving the lowest extent to stepfamily
+cohesion. Therefore, we hypothesize that:
+
+H2b: Focal parents without stepchildren perceive the highest extent of
+stepfamily cohesion, followed by those with nonresident stepchildren,
+part-time resident stepchildren and, lastly, resident stepchildren.
+
+\hypertarget{data-and-method}{%
+\section{Data and Method}\label{data-and-method}}
+
+I calculated the N (with missing values on the relevant variables
+excluded, so this is the most conservative sample size.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.7826}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0870}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0435}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0435}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0435}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Selection}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sample size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule()
+\endhead
+\textbf{N original} & 3056 & & & \\
+\textbf{N repartnered (mar/cohab)} & 1456 & & & \\
+\textbf{N at least one resident child (complete cases)} & 569 & & & \\
+\textbf{at least one resident child and focal child \textless{} 18} &
+138 & & & \\
+\bottomrule()
+\end{longtable}
+
+569 seems OK, but we could consider doing a sensitivity power analysis
+to be sure.
+
+\printbibliography[title=References]
+
+
+
+
+
+\end{document}
