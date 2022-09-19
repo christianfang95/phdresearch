@@ -51,7 +51,90 @@ In this study, we comprehensively investigate parents’ perceptions of stepfami
 
 # Theoretical Background
 
-In the following, we outline our theoretical arguments regarding how and why postdivorce stepfamily structure could influence parents' perceptions of stepfamily cohesion. 
+In the following, we outline our theoretical arguments regarding how and why postdivorce stepfamily structure could influence parents' perceptions of stepfamily cohesion. Our arguments are phrased from the vantage point of a "focal parent" (i.e., the respondent), who has a child from a previous relationship and is currently in a stable (i.e., cohabitational or marital) relationship with their current partner. The current partner can also have a stepchild, and the focal parent can have a biological child with their current partner. In other words, the focal parents we are investigating are part of stepfamilies where there are one or two stepchildren, and possibly a halfsibling. We are only considering stepfamilies in which at least one of the children from the focal parents' or current partner's former relationship is (part)time resident in focal parents' household. This is because stepfamily cohesion likely applies less to stepfamily situations without any resident children.
+
+We, first, elaborate on differences between residence arrangements (i.e., sibling complexity) before elaborating on potential differences between focal parents who do and do not have a shared biological child with their current partners vis-a-vis cohesion.
+
+
+
+
+
+# Halfsibling
+
+In stepfamilies, having a shared biological child has a high symbolic value for parents, above and beyond fulfilling the desire for (further) offspring. For example, the commitment hypothesis, having a shared biological child is used to signal commitment to each other: focal parents (and their ex-partners) might want to have a child together to show to each other that they are "serious" about their new relationship, that they have moved on from their prior unions, and that they wish to focus on their new family. Additionally, per the uncertainty reduction hypothesis, having a shared child might be a delibrate strategy to reduce uncertainty about the new relationship. Stepfamilies are considered less institutionalized than "first-time, two biological parents families", which might mean that parents feel ambiguity regarding the roles and boundaries in their stepfamilies. By reproducing, the stepfamily becomes more alike a first-time family, which can make roles, boundaries, norms, and values clearer, which can lead to more positive assessments of stepfamily cohesion. Relatedly, the birth of a biological child can tightly integrate all family members, as the birth of a further biological child establishes blood ties between all stepfamily members. For example, whereas many parents perceive their current partners (i.e., the stepparent) to be outsiders, having a biological child with them can integrate them more tightly into the existing stepfamily and make them a "real" family member. Parents' children from their prior relationships become biologically related to the new child (as halfsiblings), which might lead to closer and more amicable bonds between them. Thus, the birth of a shared biological child can evoke in the focal parent the perception that their stepfamily is now "complete" and tight-knit and "cemented" - thus, cohesive. 
+
+On the other hand, there are also reasons to assume that the birth of a common biological child might not substantially change - or even decrease - the extent to which stepfamilies are perceived as cohesive. For once, the birth of a mutual child does not necessarily lead stepparents to invest more in their stepchildren, which implies that one of the parents (probably the mother) has to care for both their stepchild as well as their biological child(ren). This can be stressful and evoke perceptions of unfairness. Thus, the reduced uncertainty might also be a curse and shoulder even more burden on on of the parents, which could reduce perceptions of cohesion. Furthermore, the birth of a shared child can also induce conflict among stepfamily members. For example, the existing biological children might be opposed to the birth of the child, or they might feel "second class children" as parental attention and investments might shift towards the newborn. Resultingly, they might feel resentment towards their (step)parents. Focal parents might pick up on such conflicts, which can reduce their perceptions of stepfamily cohesion. 
+
+Prior research and theoretical arguments thus paint a mixed picture. Ganong and Coleman concluded that while there is not much evidence that a concrete baby "works" in the way parents might intend, they argued that a concrete baby might still "work" as intended due to cognitive bias: parents might post hoc argue that "they had a child, therefore it was the right decision". We, thus, assume that *Parents who have a shared biological child assess their stepfamilies as more cohesive than those who do not have a biological child* (H2).
+
+
+In sum, per these theoretical reasonings, having a shared child might be an indication that parents a) want to signal their commitment to one another, b) they wish to bring family members together 
+
+
+-> Signal commitment
+-> Uncertainty reduction
+-> More tightly integrates partner into family
+-> percolator effect: bring family members together
+
+-> make it feel like a real family
+-> not just about the parents but also the kids: does something for the family as a whole
+-> symbolyszes the continuity of the family: you might only have another child if you are very sure of your relationship
+
+
+ -> symbolic value
+ -> given as tips to parents to "cement their family" -> can bias how they look at their family (see Ganong)
+
+-> Little evidence, some evidence on relationship quality. Ganong and coleman: can still affect perceptions, even if only as a bias
+
+
+## Sibling structure
+
+For sake of simplicity, we distinguish between three scenarios. In the first scenario, the focal parent only has a (part-time) resident biological child and no stepchild. 
+
+In the second scenario, the focal parent has a (part-time) resident biological child as well as a (part-time) resident stepchild. In other words, the biological child's and stepchild's residence arrangements are symmetrical.
+
+In the third scenario, the focal parent's biological child and stepchild have different - asymmetrical - residence arrangements, meaning that one of the two children resides (part-time) with the focal parent and the other child is nonresident. 
+
+Parents' perceptions of cohesion likely vary substantially between these three scenarios. 
+
+Stepfamily constellations in which there is only one child (so the first scenario) are probably experienced as most cohesive. 
+
+Asymmetry: guilt about self or other parent 
+
+
+
+
+
+### Part-time residence
+
+Part-time residence of either the biological child or stepchild can further complicate parents' family situation and assessment of their stepfamilies as cohesive.
+
+In case of shared residence, the child constantly moves between household of the focal parent and that of (their current partner's) ex-partner. This implies that focal parents' (and their partners') access to the children in question is limited, compared to if the children resided full time-in their household. Such limited access can make it difficult to practice family routines and rituals that involve all core stepfamily members. Such routines and rituala are, however, particularly important in stepfamilies, as they can serve to create a cohesive group identity. Additionally, in case of shared residence, parents might, to an extent, be still  entangled in their "previous" families. Aspects of the child's life - financial matters, division of holidays etc. - need to be constantly negotiated with the ex-partner(s). Resultingly, parents might not feel like they have a cohesive stepfamily or they might be confused about who belongs to their family in the first place. Therefore, when either the focal parents' biological child or stepchild is part-time resident, parents might assess their stepfamily as less cohesive. 
+
+
+-> might apply equally to all types -> all - 
+
+Such a negative effect of shared residence on perceptions of cohesion might especially apply in the scenario of both children being (part-time) resident (so the third scenario).
+
+First scenario: only one schedule to keep in mind
+Aysmmetrical: it is already assymm, so not too much of an additional burden? 
+Res res: could be two part-time res! Very stressful? Very unclear if both children follow a shared residence arrangmeent 
+
+
+-> less access to the child -> difficult to create family routines together, fewer bonding opportunites with the stepchild in particular which create cohesion
+
+-> in and out means more negotiation with the ex-partners: so less clear separation old vs new, but also unclear boundaries -> boundary ambiguity
+
+
+
+In sum, 
+
+
+
+
+
+
+
 
 
 
