@@ -57,7 +57,61 @@ We, first, elaborate on differences between residence arrangements (i.e., siblin
 
 
 
+## Household/sibling structure
 
+Both the focal parent's existing biological child and their current partner's potential child from a previous union can be (part-time) residential or nonresidential. Excluding the scenario where both children are nonresidential, the combinations of both children's residence arrangements yield three distinct scenarios or household structures.
+
+The first scenario - and most simple - scenario is that there is only one residential child (from the focal parent), but no stepchild (i.e., the current partner does not have a child from their previous union). In such a stepfamily, it might be comparatively easy to foster stepfamily cohesion. While establishing relationships between stepparents and stepchildren is usually a difficult process, it might be easier if there is only one new family member that needs to be integrated (i.e., only the current partner). This process might be relatively easy if the child is residential, as the stepparent might have many opportunities for engaging with the child. If this goes well, the focal parent could be relatively optimistic about the state of their stepfamily. Furthermore, if the child is residential, parents have many opportunities to create a sense of family belonging and cohesion by performing family routines and rituals together. On the other hand, many stepparents and stepchildren do not get along, and such conflicts can become all the more salient if stepparents and their stepchildren reside in the same household. However, coresidence allows comparatively many opportunities for working through such conflicts and establishing a cordial relationship. 
+
+In the second scenario, both the focal parent and their current partner have a residential biological child from a previous union. Phrased differently, the household consists of two residential stepchildren. Life in such a stepfamily might be more complex than in simple stepfamilies that only comprise one stepchild. For once, both the focal parent and their current partner need to get to know their new stepchild and simultaneously adopt the role of a stepparent. This can be an often long, difficult, and at times frustrating process, that both (step)parents go through at the same time. On the other hand, both children being residential gives all stepfamily members ample opportunities to get to know one another and build family routines, which are important for creating perceptions of stepfamily cohesion and belonging. Furthermore, all stepfamily members residing in the same household allows for a distinct family identity to be developed, as there are relatively few ties to the respective "old" families. However, it is not guaranteed that all family members get along, and it is common for stepsiblings to have contentious and conflictual relationships. Parents might pick up on such conflict, which might negatively influence their assessment of their stepfamily. Therefore, parents might assess stepfamilies with two residential children as less cohesive than those with only one child to begin with. 
+
+<!-- Two residential children: symmetrical; 
+-> more difficult: both children need to get to know each other, it is not guaranteed that they will get along
+-> partner also needs to get to know stepchild, both parents become stepparents -> more stressful
+-> can integrate them into routines -> easier to create a new family
+-> clear separation from previous family
+--> 
+
+
+The third scenario involves one of the children being residential, and the other child being nonresidential. In other words, the children's residence arrangements are assymmetrical. For various reasons, assymmetrical residence arrangements can be challenging and lead parents to perceive their stepfamilies as less cohesive. For once, whereas it is easy to build stepfamily cohesion through family rituals and routines when children are residential, this is more difficult when one of the children is nonresidential. Practicing routines and rituals becomes more difficult and less-self evident, for example as more planning is necessary (e.g., when is the nonresidential child at home?). This also implies that, if one of the children is nonresidential, that parent might to some extent still be involved in their "old family", which can lead to a less clear separation between the "old" and the "new" family. Family boundaries might, as a result, also be less clear. Assymmetries in residence arrangements can, furthermore, also evoke feelings of guilt. For example, if the focal parent's child is residential but their current partner's child is not, they might feel guilty about being able to spend so much time with their child while their partner cannot do the same. Conversely, if the focal parent is the nonresident parent, the current partner might feel guilty about them not getting to see their child a lot, which can spill over into focal parents' assessment of their stepfamily as cohesive.
+
+Based on these arguments, we expect *stepfamilies with a resident child and no stepchild to be perceived as most cohesive, followed by stepfamilies with two residential children, and, lastly, stepfamilies with a residential and a nonresidential child* (H1a).
+
+These three scenarios can be further complicated by taking into account that either child or both children might follow a shared residence arrangment (i.e., they are part-time resident). In case of shared residence, the child in question constantly moves between the household of the focal parent and that of the (current partner's) ex-partner. This implies that focal parents' (and their partners') access to the children in question is limited, compared to if the children resided full time-in their household, which can make it difficult to practice family routines and rituals that involve all core stepfamily members. Additionally, in case of shared residence, parents might, to an extent, be still  entangled in their "previous" families. Aspects of the child's life - financial matters, division of holidays etc. - need to be constantly negotiated with the ex-partner(s). Resultingly, parents might not feel like they have a cohesive stepfamily or they might be confused about who belongs to their family in the first place. We, therefore hypothesize that *if either or both the biological child or stepchild are part-time resident, perceptions of cohesion will be lower* (H1b).
+
+
+<!-- 
+-> might apply equally to all types -> all - 
+
+Such a negative effect of shared residence on perceptions of cohesion might especially apply in the scenario of both children being (part-time) resident (so the third scenario).
+
+First scenario: only one schedule to keep in mind
+Aysmmetrical: it is already assymm, so not too much of an additional burden? 
+Res res: could be two part-time res! Very stressful? Very unclear if both children follow a shared residence arrangmeent 
+
+
+-> less access to the child -> difficult to create family routines together, fewer bonding opportunites with the stepchild in particular which create cohesion
+
+-> in and out means more negotiation with the ex-partners: so less clear separation old vs new, but also unclear boundaries -> boundary ambiguity
+
+
+
+
+<!-- 
+For sake of simplicity, we distinguish between three scenarios. In the first scenario, the focal parent only has a (part-time) resident biological child and no stepchild. 
+
+In the second scenario, the focal parent has a (part-time) resident biological child as well as a (part-time) resident stepchild. In other words, the biological child's and stepchild's residence arrangements are symmetrical.
+
+In the third scenario, the focal parent's biological child and stepchild have different - asymmetrical - residence arrangements, meaning that one of the two children resides (part-time) with the focal parent and the other child is nonresident. 
+
+Parents' perceptions of cohesion likely vary substantially between these three scenarios. 
+
+Stepfamily constellations in which there is only one child (so the first scenario) are probably experienced as most cohesive. 
+
+Asymmetry: guilt about self or other parent 
+
+
+-->
 
 # Halfsibling
 
@@ -68,7 +122,7 @@ On the other hand, there are also reasons to assume that the birth of a common b
 Prior research and theoretical arguments thus paint a mixed picture. Ganong and Coleman concluded that while there is not much evidence that a concrete baby "works" in the way parents might intend, they argued that a concrete baby might still "work" as intended due to cognitive bias: parents might post hoc argue that "they had a child, therefore it was the right decision". We, thus, assume that *Parents who have a shared biological child assess their stepfamilies as more cohesive than those who do not have a biological child* (H2).
 
 
-In sum, per these theoretical reasonings, having a shared child might be an indication that parents a) want to signal their commitment to one another, b) they wish to bring family members together 
+<!-- In sum, per these theoretical reasonings, having a shared child might be an indication that parents a) want to signal their commitment to one another, b) they wish to bring family members together 
 
 
 -> Signal commitment
@@ -87,43 +141,6 @@ In sum, per these theoretical reasonings, having a shared child might be an indi
 -> Little evidence, some evidence on relationship quality. Ganong and coleman: can still affect perceptions, even if only as a bias
 
 
-## Sibling structure
-
-For sake of simplicity, we distinguish between three scenarios. In the first scenario, the focal parent only has a (part-time) resident biological child and no stepchild. 
-
-In the second scenario, the focal parent has a (part-time) resident biological child as well as a (part-time) resident stepchild. In other words, the biological child's and stepchild's residence arrangements are symmetrical.
-
-In the third scenario, the focal parent's biological child and stepchild have different - asymmetrical - residence arrangements, meaning that one of the two children resides (part-time) with the focal parent and the other child is nonresident. 
-
-Parents' perceptions of cohesion likely vary substantially between these three scenarios. 
-
-Stepfamily constellations in which there is only one child (so the first scenario) are probably experienced as most cohesive. 
-
-Asymmetry: guilt about self or other parent 
-
-
-
-
-
-### Part-time residence
-
-Part-time residence of either the biological child or stepchild can further complicate parents' family situation and assessment of their stepfamilies as cohesive.
-
-In case of shared residence, the child constantly moves between household of the focal parent and that of (their current partner's) ex-partner. This implies that focal parents' (and their partners') access to the children in question is limited, compared to if the children resided full time-in their household. Such limited access can make it difficult to practice family routines and rituals that involve all core stepfamily members. Such routines and rituala are, however, particularly important in stepfamilies, as they can serve to create a cohesive group identity. Additionally, in case of shared residence, parents might, to an extent, be still  entangled in their "previous" families. Aspects of the child's life - financial matters, division of holidays etc. - need to be constantly negotiated with the ex-partner(s). Resultingly, parents might not feel like they have a cohesive stepfamily or they might be confused about who belongs to their family in the first place. Therefore, when either the focal parents' biological child or stepchild is part-time resident, parents might assess their stepfamily as less cohesive. 
-
-
--> might apply equally to all types -> all - 
-
-Such a negative effect of shared residence on perceptions of cohesion might especially apply in the scenario of both children being (part-time) resident (so the third scenario).
-
-First scenario: only one schedule to keep in mind
-Aysmmetrical: it is already assymm, so not too much of an additional burden? 
-Res res: could be two part-time res! Very stressful? Very unclear if both children follow a shared residence arrangmeent 
-
-
--> less access to the child -> difficult to create family routines together, fewer bonding opportunites with the stepchild in particular which create cohesion
-
--> in and out means more negotiation with the ex-partners: so less clear separation old vs new, but also unclear boundaries -> boundary ambiguity
 
 
 
@@ -147,7 +164,7 @@ We start by describing the potential influence that having a shared biological c
 ## Having a shared biological child
 
 Upwards trends in remarriage and multipartner fertility imply that many repartnered parents go on to having a shared biological child with their current partner. That new child becomes the halfsibling of parents' children from their prior unions. For two main reasons, having such a shared biological child can increase parents' perceptions of stepfamily cohesion.
-
+<-- 
 <!-- Argument 1: relationship quality -->
 One line of argument is based on the presence of a shared biological child influencing perceptions of cohesion via relationship quality. As has been frequently stated in form of the "concrete baby" hypothesis, parents might deliberately seek to have a biological child with their current partner to improve and stabilize the relationship with him or her. While doing so has been shown to have have negative consequences of their existing biological childrens' well-being [@sanner2018half], studies investigating the effect of having shared children on parents' relationship quality with their partner found a positive association [@ivanova2019cementing]. And as relationship satisafction has, in turn, been consistently demonstrated to increase perceptions of stepfamily cohesion [@jensen2022associations @king2015adolescents @king2016factors], one would expect that having a shared biological child is positively related to perceptions of cohesion.
 
