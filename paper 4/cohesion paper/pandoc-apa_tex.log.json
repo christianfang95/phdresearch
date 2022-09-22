@@ -2,14 +2,14 @@
     {
         "type": "LoadedResource",
         "verbosity": "INFO",
-        "from": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa_template.tex",
-        "for": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa_template.tex"
+        "from": "/Users/christianfang/Documents/GitHub/phdresearch/paper 4/cohesion paper/pandoc/apa_template.tex",
+        "for": "/Users/christianfang/Documents/GitHub/phdresearch/paper 4/cohesion paper/pandoc/apa_template.tex"
     },
     {
         "type": "LoadedResource",
         "verbosity": "INFO",
-        "from": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa.csl",
-        "for": "/Users/christianfang/Desktop/cohesion paper/pandoc/apa.csl"
+        "from": "/Users/christianfang/Documents/GitHub/phdresearch/paper 4/cohesion paper/pandoc/apa.csl",
+        "for": "/Users/christianfang/Documents/GitHub/phdresearch/paper 4/cohesion paper/pandoc/apa.csl"
     },
     {
         "type": "LoadedResource",
@@ -24,40 +24,7 @@
             "t": "RawBlock",
             "c": [
                 "html",
-                "<!-- Argument 1: relationship quality -->"
-            ]
-        }
-    },
-    {
-        "type": "BlockNotRendered",
-        "verbosity": "INFO",
-        "contents": {
-            "t": "RawBlock",
-            "c": [
-                "html",
-                "<!-- Argument 2: Changes family perceptions and norms on a more general level --->"
-            ]
-        }
-    },
-    {
-        "type": "InlineNotRendered",
-        "verbosity": "INFO",
-        "contents": {
-            "t": "RawInline",
-            "c": [
-                "html",
-                "<!-- also need to say somethign about the stepparent -->"
-            ]
-        }
-    },
-    {
-        "type": "BlockNotRendered",
-        "verbosity": "INFO",
-        "contents": {
-            "t": "RawBlock",
-            "c": [
-                "html",
-                "<!-- Selections that make sense;\n-> selection: \n-> Exclude people who do not currenlty have a new cohabiting partner or spouse (singletons +  LAT relationships), N remaining=1,465\n-> there needs to be at least one part-time resident child in the household\n-> only new biochild not enough -> would probably not be considered a steprelationship/stepfamily \n\n> Operationalization:\n\nHaving a new bio child (0/1)\nResidence old bio child (0/1/2)\nStepchild (0/1/2/3)\n\n## Measures of Dependent Variable\n\n*Stepfamily cohesion* \n\n## Measures of Independent Variables\n\n*Having a biological child with the current partner*\n\n*Presence stepchild*\n\n*Residence stepchild* \n\n*Residence biological child*\n\n## Measures of Control Variables\n\n## Analytical Strategy\n\nFirst, we imputed missing values using multiple imputations by chained equations in R. \n\nNext, we estimated two multilevel linear regression models using lme4 in R. We used multilevel \n-> Multiple regression in Python\n\n# Results\n\n# Discussion and Conclusion \n -->"
+                "<!--\n# Data and Method\n\n-> Operationalization:\n\nHaving a new bio child (0/1)\nResidence old bio child (0/1/2)\nStepchild (0/1/2/3)\n\nCalculate the N (with missing values -> at least one non-missing)\n\n| **Selection**                                        | Sample size |   |   |   |\n|------------------------------------------------------|------|---|---|---|\n| **N original**                                       | 3056 |   |   |   |\n| **N repartnered (mar/cohab)**                        | 1456 |   |   |   |\n| **N at least one resident child (complete cases)**   | 569  |   |   |   |\n| **at least one resident child and focal child < 18** | 138  |   |   |   |\n\n\n\n-> selection: \n-> Exclude people who do not currenlty have a new cohabiting partner or spouse (singletons +  LAT relationships), N remaining=1,465\n-> there needs to be at least one part-time resident child in the household\n-> only new biochild not enough -> would probably not be considered a steprelationship/stepfamily \n\n## Measures of Dependent Variable\n\n*Stepfamily cohesion* \n\n## Measures of Independent Variables\n\n*Having a biological child with the current partner*\n\n*Presence stepchild*\n\n*Residence stepchild* \n\n*Residence biological child*\n\n## Measures of Control Variables\n\n## Analytical Strategy\n\nFirst, we imputed missing values using multiple imputations by chained equations in R. \n\nNext, we estimated two multilevel linear regression models using lme4 in R. We used multilevel \n-> Multiple regression in Python\n\n# Results\n\n# Discussion and Conclusion \n-->"
             ]
         }
     }
